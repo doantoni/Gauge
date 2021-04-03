@@ -61,122 +61,63 @@ body {
   /* background: darkgrey; */
   border-radius: 50%;
   border: 2px solid #ae6ba1;
+  position: relative;
   /* box-sizing: border-box; */
   overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 10s;
+}
+
+.left:hover {
+  transform: rotate(3600deg)
 }
 
 .right{
    width: 18em;
   height: 18em;
+  position: relative;
   /* background: darkgray; */
   border-radius: 50%;
   border: 2px solid #ae6ba1;
   /* box-sizing: border-box; */
   border-radius: 50%;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
+.circle {
+  height: 101%;
+  width: 101%;
+  border: 2px solid rgb(72, 89, 116);
+  border-radius: 50%;
+ position: absolute;
+  transition: 2s;
+}
 
- .first-indicator {
-  background-color: white;
+.indicator {
+  width: 2%;
+  height: 1%;
+  background-color: rgb(72, 89, 116);
   margin-top: 49.5%;
-  width: 50%;
-  height: 1%;
-  position: relative;
-  right: 31%;
-  bottom: 31%;
-  transform-origin: center right;
-   transform: rotate(45deg);   
+  box-shadow: 0.04em 0.06em 0.15em black;
 }
 
-.second-indicator {
-    background-color: white;
-    width: 50%;
-    height: 1%;
-    position: relative; 
-     bottom: 1%; 
-    bottom: 44%;
-    transform-origin: center right;
-     transform: rotate(90deg); 
+.indicator-long {
+  width: 5%;
+  height: 1%;
+  background-color:rgb(72, 89, 116);
+  position: relative;
+  bottom: 1%;
+  margin-top: 50.5%;
+  box-shadow: 0.05em 0.1em 0.2em black;
+  color: white;
+  font-family: 'Staatliches', cursive;
+  font-size: large;
 }
-
- .third-indicator {
-  background-color: white;
-  
-  width: 50%;
-  height: 1%;
-  position: relative;
-  bottom: 2%;
-  left: 31%;
-  bottom: 31%;
-  transform-origin: center right; 
-  transform: rotate(135deg); 
-} 
-
-.fourth-indicator {
-  background-color: white;
-  
-  width: 50%;
-  height: 1%;
-  position: relative;
-  bottom: 3%;
-  left: 45%;
-  transform-origin: center right; 
-  transform: rotate(180deg); 
-} 
-
-.fifth-indicator {
-  background-color: white;
-  width: 50%;
-  height: 1%;
-  position: relative;
-  bottom: 4%;
-  top: 28%;
-  left: 31%;
-  transform-origin: center right; 
-  transform: rotate(225deg); 
-} 
-
-.sixth-indicator {
-  display: none;
-  background-color: white;
-  
-  width: 50%;
-  height: 1%;
-  position: relative;
-  bottom: 5%;
-  top: 40%;
-  transform-origin: center right; 
-  transform: rotate(270deg); 
-  
-} 
-
-.seventh-indicator {
-  background-color: white;
-  
-  width: 50%;
-  height: 1%;
-  position: relative;
-  bottom: 6%;
-  top: 26%;
-  right: 30%;
-  transform-origin: center right; 
-  transform: rotate(315deg); 
-} 
-
-.eigth-indicator {
-  background-color: white;
-  
-  width: 50%;
-  height: 1%;
-  position: relative;
-  bottom: 7%;
- position: relative;
- right: 45%;
-  transform-origin: center right; 
-  transform: rotate(360deg); 
-}
-
 
 
 .leftArrow {
@@ -185,13 +126,14 @@ body {
   border: 1px solid black;
   width: 50%;
   height: 2%;
-  position: relative;
-  bottom: 8.5%;
   border-top-left-radius: 45%;
   border-bottom-left-radius: 45%;
   transform-origin: center right;
-  transform: rotate(-45deg);
+ /*  transform: rotate(-45deg); */
   transition: 2s;
+  position: relative;
+  right: 25%;
+  z-index: +1;
 }
 
 .rotateArrow {
