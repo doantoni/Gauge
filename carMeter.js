@@ -77,69 +77,23 @@ let rotateIncrement = 45;
 
  // Selecting all paragraphs inside long indicators
 
- const paragraphs = document.querySelectorAll(".indicator-long p");
+ const leftParagraphs = document.querySelectorAll(".left p");
+const rightParagraphs = document.querySelectorAll(".right p");
 
- paragraphs[0].textContent = "10";
- paragraphs[0].style.marginLeft = "150%";
- paragraphs[0].style.position = "relative";
- paragraphs[0].style.bottom = "200%";
- paragraphs[0].style.transform = "rotate(-36deg)";
+// Logic for adding numbers to long paragraphs
 
- paragraphs[1].textContent = "20";
- paragraphs[1].style.marginLeft = "180%";
- paragraphs[1].style.position = "relative";
- paragraphs[1].style.bottom = "80%";
- paragraphs[1].style.transform = "rotate(-72deg)";
- 
- paragraphs[2].textContent = "30";
- paragraphs[2].style.marginLeft = "180%";
- paragraphs[2].style.position = "relative";
- paragraphs[2].style.bottom = "80";
- paragraphs[2].style.transform = "rotate(-108deg)";
+        for(i=0 ; i<leftParagraphs.length - 1 ; i++){
+            
+            leftParagraphs[leftParagraphs.length - 1].textContent = "0";
+            leftParagraphs[i].textContent = `${(i+1)*10}`;
+            leftParagraphs[i].style.transform = `rotate(-${(i+1)*36}deg)`;
+        }
 
- paragraphs[3].textContent = "40";
- paragraphs[3].style.marginLeft = "180%";
- paragraphs[3].style.position = "relative";
- paragraphs[3].style.bottom = "80%";
- paragraphs[3].style.transform = "rotate(-144deg)";
-
- paragraphs[4].textContent = "50";
- paragraphs[4].style.marginLeft = "200%";
- paragraphs[4].style.position = "relative";
- paragraphs[4].style.bottom = "200%";
- paragraphs[4].style.transform = "rotate(-180deg)";
-
- paragraphs[5].textContent = "60";
- paragraphs[5].style.marginLeft = "200%";
- paragraphs[5].style.position = "relative";
- paragraphs[5].style.bottom = "200%";
- paragraphs[5].style.transform = "rotate(-216deg)";
-
- paragraphs[6].textContent = "70";
- paragraphs[6].style.marginLeft = "200%";
- paragraphs[6].style.position = "relative";
- paragraphs[6].style.bottom = "200%";
- paragraphs[6].style.transform = "rotate(-252deg)";
-
- paragraphs[7].textContent = "80";
- paragraphs[7].style.marginLeft = "200%";
- paragraphs[7].style.position = "relative";
- paragraphs[7].style.bottom = "200%";
- paragraphs[7].style.transform = "rotate(-288deg)";
-
- paragraphs[8].textContent = "90";
- paragraphs[8].style.marginLeft = "200%";
- paragraphs[8].style.position = "relative";
- paragraphs[8].style.bottom = "200%";
- paragraphs[8].style.transform = "rotate(-324deg)";
-
- paragraphs[9].textContent = "0";
- paragraphs[9].style.marginLeft = "200%";
- paragraphs[9].style.position = "relative";
- paragraphs[9].style.bottom = "200%";
- paragraphs[9].style.transform = "rotate(-360deg)";
- paragraphs[9].style.zIndex = "-1";
-
+        for(i=0; i<rightParagraphs.length - 1 ; i++){
+            rightParagraphs[rightParagraphs.length - 1].textContent = "0";
+            rightParagraphs[i].textContent = `${(i+1)*10}`;
+            rightParagraphs[i].style.transform = `rotate(-${(i+1)*36}deg)`;
+        }
 
 // Gas pedal logic
 
