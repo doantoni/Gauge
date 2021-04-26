@@ -1,126 +1,120 @@
-let gasPedal = document.querySelector(".gas-pedal");
-let brakePedal = document.querySelector(".brake-pedal");
-const shiftGear = document.querySelector(".clutch-pedal");
-const leftArrow = document.querySelectorAll("div.leftArrow");
-const leftCircle = document.querySelector(".left");
-const rightCircle = document.querySelector(".right");
-
+const circle = document.querySelector(".circle-div");
+const h1 = document.querySelector("h1");
+const button = document.querySelector(".container")
 let divs = [];
-let rotateIncrement = 45;
+let multiplier = 0;
 
-// Indicators for left circle
 
-    for(let i=1; i<=40; i++){
-        
-        //create 40 circle divs and append to left
+
+for(let i=1; i<=40; i++){
     
-        divs[i] = document.createElement("div");
-        divs[i].className = "circle";
-        leftCircle.append(divs[i]);
+    // create function for adding circles and markings
+    function incrementedAdding (){
+
         
-        // create indicators and long indicators
-        const indicator = document.createElement("div");
-        indicator.className = "indicator";
-        const indicatorLong = document.createElement("div");
-        indicatorLong.className = "indicator-long";
-        
-        // append indicators to their rightful locations
+            divs[i] = document.createElement("div");
+            divs[i].className = "circles";
+            circle.append(divs[i]);
+       
+               const marking = document.createElement("div");
+               marking.className = "marking";
+               const markingLong = document.createElement("div");
+               markingLong.className = "marking-long";
+       
+               if(i % 4 !== 0){
+                   divs[i].append(marking);
+               } else {
+                   divs[i].append(markingLong);
+               }
+               
+               setTimeout(function (){
+                   divs[i].style.width = "101%";
+               divs[i].style.height = "101%";
+                   divs[i].style.transform = `rotate(${i*9}deg)`
+               }, 500);
+            }
+
+                
     
-        if(i % 4 !== 0){
-            divs[i].append(indicator);
-        } else {
-            divs[i].append(indicatorLong);
-        }
-        divs[i].style.transform = `rotate(${i*9}deg)`;
+    
+
+    // create conditionals for speeding up adding the markings in the circle
+    circle.addEventListener("click", function(){
+        h1.textContent = "We create circle divs in JS and one marking on each one";
+        setTimeout(function(){
+            h1.textContent = "Then we rotate each circle according to the degree we want each marking to be at";
+        }, 4000);
+
+        if (i< 4){
+            setTimeout(incrementedAdding, 1000*i)
+            
+    } else if (i >= 4 && i < 10){
+       
+        setTimeout(function(){
+            setTimeout(incrementedAdding, 500*i);
+            
+        }, 2000)
+        
+    } else {
+        setTimeout(function(){
+            setTimeout(function(){
+                divs[i] = document.createElement("div");
+                divs[i].className = "circles-no-border";
+                circle.append(divs[i]);
+           
+                   const marking = document.createElement("div");
+                   marking.className = "marking";
+                   const markingLong = document.createElement("div");
+                   markingLong.className = "marking-long";
+           
+                   if(i % 4 !== 0){
+                       divs[i].append(marking);
+                   } else {
+                       divs[i].append(markingLong);
+                   }
+                   
+                   setTimeout(function (){
+                       divs[i].style.width = "101%";
+                   divs[i].style.height = "101%";
+                       divs[i].style.transform = `rotate(${i*9}deg)`
+                   }, 500);
+            }, 100*i);
+           
+        }, 5000);
+    
     }
 
-    
+    setTimeout(function (){
+        document.querySelector(".arrow").style.transform = "translate(0%)";
+        h1.textContent = "Then we add an arrow";
+    }, 11000);
+
+    setTimeout(function (){
+        h1.textContent = "And maybe a slider input to rotate the arrow";
+        document.querySelector(".input").style.transform = "translateY(0vh)";
+    }, 12000);
+
+    setTimeout(function (){
+        h1.style.color = "transparent";
+    }, 14000);
+
+    setTimeout(function (){
+        button.style.transform = "translateX(0vh)";
+    }, 14500);
+    })     
+ }
+
  
 
- // Indicators for right circle
+ function updateTextInput(val) {
+    document.getElementById('textInput').value=`${val}°`;
+    document.querySelector(".arrow").style.transform = `rotate(${val}deg)`; 
+  }
 
-    for(let i=1; i<=40; i++){
-        
-        //create 40 circle divs and append to right
-    
-        divs[i] = document.createElement("div");
-        divs[i].className = "circle";
-        rightCircle.append(divs[i]);
-        
-        // create indicators and long indicators
-        const indicator = document.createElement("div");
-        indicator.className = "indicator";
-        const indicatorLong = document.createElement("div");
-        indicatorLong.className = "indicator-long";
-        
-        // append indicators to their rightful locations
-    
-        if(i % 4 !== 0){
-            divs[i].append(indicator);
-        } else {
-            divs[i].append(indicatorLong);
-        }
-        divs[i].style.transform = `rotate(${i*9}deg)`;
-    }
-
-// Creating array of long indicators
-
-        const allLongIndicators = document.querySelectorAll(".circle .indicator-long");
-        console.log(allLongIndicators);
-
-// Creating paragraph elements inside long indicators
-
-        for (let i = 0; i<allLongIndicators.length ; i++){
-            const innerParagraphs = document.createElement("p");
-            allLongIndicators[i].appendChild(innerParagraphs);
-        }
-
- // Selecting all paragraphs inside long indicators
-
- const leftParagraphs = document.querySelectorAll(".left p");
-const rightParagraphs = document.querySelectorAll(".right p");
-
-// Logic for adding numbers to long paragraphs
-
-        for(i=0 ; i<leftParagraphs.length - 1 ; i++){
-            
-            leftParagraphs[leftParagraphs.length - 1].textContent = "0";
-            leftParagraphs[i].textContent = `${(i+1)*10}`;
-            leftParagraphs[i].style.transform = `rotate(-${(i+1)*36}deg)`;
-        }
-
-        for(i=0; i<rightParagraphs.length - 1 ; i++){
-            rightParagraphs[rightParagraphs.length - 1].textContent = "0";
-            rightParagraphs[i].textContent = `${(i+1)*10}`;
-            rightParagraphs[i].style.transform = `rotate(-${(i+1)*36}deg)`;
-        }
-
-// Gas pedal logic
-
-
-gasPedal.addEventListener("click", function(){
-        leftArrow[0].style.transform = "rotate(225deg)";
-        leftArrow[1].style.transition = "2s";
-        leftArrow[1].style.transform = "rotate(45deg)";
-    }     
-)
-
-// Brake pedal logic
-
-brakePedal.addEventListener("click", function(){
-    leftArrow[0].style.transform = "rotate(0deg)";
-    leftArrow[1].style.transform = "rotate(0deg)" 
-})
-
-//Shift pedal logic
-
-shiftGear.addEventListener("click", function (){
-    rotateIncrement += 45;
-    leftArrow[0].style.transition = "1s";
-    leftArrow[0].style.transform = "rotate(150deg)";
-    setTimeout(function returnRev (){
-        leftArrow[0].style.transform = "rotate(225deg)";
-        leftArrow[0].style.transition = "2s";
-    }, 1000);
-    leftArrow[1].style.transform = `rotate(${rotateIncrement}deg)`;
-})
+  const firstInput = document.querySelector("#range");
+  firstInput.value = 0;
+  
+  firstInput.addEventListener("click", function(){
+        document.querySelector("p").style.transition = "1s";
+        document.querySelector("p").style.opacity = "1";
+  })
